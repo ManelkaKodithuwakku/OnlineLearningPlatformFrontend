@@ -1,12 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import { LoginPage } from './pages/LoginPage';
+import { LogInPage } from './pages/LogInPage';
 import { SignUpPage } from './pages/SignUpPage';
+import { PrivateRoute } from './auth/PrivateRoute';
 import { CourseListPage } from './pages/CourseListPage';
 import { CourseDetailPage } from './pages/CourseDetailPage';
 import { EnrollPage } from './pages/EnrollPage';
 import { AdminDashboard } from './pages/AdminDashboard';
-import { PrivateRoute } from './auth/PrivateRoute';
+import { ManageCoursesPage } from './pages/ManageCoursesPage';
 
 const Routes = () => {
 
@@ -14,7 +15,7 @@ const Routes = () => {
         <Router>
             <Switch>
                 <Route path="/login">
-                    <LoginPage />
+                    <LogInPage />
                 </Route>
                 <Route path="/signup">
                     <SignUpPage />
@@ -35,7 +36,7 @@ const Routes = () => {
                     <ManageCoursesPage />
                 </PrivateRoute>
                 <Route path="/">
-                    <Redirect to="/courses" />
+                    <Redirect to="/login" />
                 </Route>
             </Switch>
         </Router>

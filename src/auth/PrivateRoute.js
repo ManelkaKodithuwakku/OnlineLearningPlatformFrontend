@@ -8,5 +8,5 @@ export const PrivateRoute = ({adminOnly, ...rest}) => {
 
     if (adminOnly) return <Redirect to="/admin" />
     
-    return <Route {...props} />
+    return <Route {...rest} />
 }

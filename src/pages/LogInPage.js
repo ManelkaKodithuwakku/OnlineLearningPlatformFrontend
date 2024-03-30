@@ -3,31 +3,29 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { useToken } from '../auth/useToken';
 
-export const SignUpPage = () => {
+export const LogInPage = () => {
     const [, setToken] = useToken();
 
     const [errorMessage] = useState('');
 
     const [emailValue, setEmailValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
-    const [confirmPasswordValue, setConfirmPasswordValue] = useState('');
 
     const history = useHistory();
 
-    const onSignUpClicked = async () => {
-        const response = await axios.post('/api/signup', {
+    const onLogInClicked = async () => {
+        const response = await axios.post('/api/login', {
             email: emailValue,
-            password: passwordValue
-        })
-
-        const {token} = response.data;
+            password: passwordValue,
+        });
+        const { token } = response.data;
         setToken(token);
         history.push('/');
     }
 
     return (
         <div className="content-container">
-            <h1>Sign Up</h1>
+            <h1>Log In</h1>
             {errorMessage && <div className="fail">{errorMessage}</div>}
             <input
                 value={emailValue}
@@ -38,19 +36,12 @@ export const SignUpPage = () => {
                 value={passwordValue}
                 onChange={e => setPasswordValue(e.target.value)}
                 placeholder="password" />
-            <input
-                type="password"
-                value={confirmPasswordValue}
-                onChange={e => setConfirmPasswordValue(e.target.value)}
-                placeholder="re-enter password" />
             <hr />
             <button
-                disabled={
-                    !emailValue || !passwordValue ||
-                    passwordValue !== confirmPasswordValue
-                }
-                onClick={onSignUpClicked}>Sign Up</button>
-            <button onClick={() => history.push('/login')}>Already have an account? Log In</button>
+                disabled={!emailValue || !passwordValue}
+                onClick={onLogInClicked}>Log In</button>
+            <button onClick={() => history.push('/forgot-password')}>Forgot your password?</button>
+            <button onClick={() => history.push('/signup')}>Don't have an account? Sign Up</button>
         </div>
     );
 }
