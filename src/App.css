@@ -1,38 +1,101 @@
-.App {
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+}
+
+button {
+  padding: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  background-color: black;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+h3, h4 {
+  margin-bottom: 0;
+}
+
+nav {
+  border-bottom: 4px solid black;
   text-align: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: white;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+nav li {
+  display: inline-block;
+  padding-top: 24px;
+  padding-bottom: 24px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+nav a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  padding: 24px 32px;
+}
+
+nav a:hover {
+  background: black;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+
+.course-list-item {
+  text-decoration: none;
+  color: black;
+  padding: 16px 0 0 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.course-list-item p {
+  padding-bottom: 32px;
+  border-bottom: 2px solid black;
+}
+
+.nav-right {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+.course-enroll{
+  position: relative;
+  
+}
+
+.course-enroll h1{
+  margin-right: 120px;
+}
+
+.course-enroll button{
+  position: absolute;
+  top: 20px;
+  right: 0;
+  height: 50px;
+  width: 100px;
+}
+
+.course-container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.course-row{
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px black solid;
+}
+
+.course-row :last-child{
+  color: green;
 }

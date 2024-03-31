@@ -8,11 +8,16 @@ import { CourseDetailPage } from './pages/CourseDetailPage';
 import { EnrollPage } from './pages/EnrollPage';
 import { AdminDashboard } from './pages/AdminDashboard';
 import { ManageCoursesPage } from './pages/ManageCoursesPage';
+import NavBar from './components/NavBar';
+import { useUser } from './auth/useUser';
 
 const Routes = () => {
 
+    const user = useUser();
+
     return (
         <Router>
+            {user && <NavBar />}
             <Switch>
                 <Route path="/login">
                     <LogInPage />
@@ -23,7 +28,7 @@ const Routes = () => {
                 <PrivateRoute path="/courses" exact>
                     <CourseListPage />
                 </PrivateRoute>
-                <PrivateRoute path="/courses/:id">
+                <PrivateRoute path="/courses/:courseId">
                     <CourseDetailPage />
                 </PrivateRoute>
                 <PrivateRoute path="/enroll/:id">
@@ -36,7 +41,7 @@ const Routes = () => {
                     <ManageCoursesPage />
                 </PrivateRoute>
                 <Route path="/">
-                    <Redirect to="/login" />
+                    <Redirect to="/courses" />
                 </Route>
             </Switch>
         </Router>

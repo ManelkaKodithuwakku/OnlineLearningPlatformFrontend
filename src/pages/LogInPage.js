@@ -6,7 +6,7 @@ import { useToken } from '../auth/useToken';
 export const LogInPage = () => {
     const [, setToken] = useToken();
 
-    const [errorMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const [emailValue, setEmailValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
@@ -14,13 +14,18 @@ export const LogInPage = () => {
     const history = useHistory();
 
     const onLogInClicked = async () => {
-        const response = await axios.post('/api/login', {
-            email: emailValue,
-            password: passwordValue,
-        });
-        const { token } = response.data;
-        setToken(token);
-        history.push('/');
+        try{
+            const response = await axios.post('/api/users/login', {
+                email: emailValue,
+                password: passwordValue,
+            });
+            const { token } = response.data;
+            setToken(token);
+            history.push('/');
+            window.location.reload()
+        }catch(e){
+            setErrorMessage(e.response.data.message)
+        }
     }
 
     return (

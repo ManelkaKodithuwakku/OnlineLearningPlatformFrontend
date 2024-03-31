@@ -6,29 +6,42 @@ import { useToken } from '../auth/useToken';
 export const SignUpPage = () => {
     const [, setToken] = useToken();
 
-    const [errorMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const [emailValue, setEmailValue] = useState('');
+    const [usernameValue, setUserNameValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
     const [confirmPasswordValue, setConfirmPasswordValue] = useState('');
 
     const history = useHistory();
 
     const onSignUpClicked = async () => {
-        const response = await axios.post('/api/signup', {
-            email: emailValue,
-            password: passwordValue
-        })
+        
+        try {
+            const response = await axios.post('http://localhost:8080/api/users/signup', {
+                username: usernameValue,
+                email: emailValue,
+                password: passwordValue
+            })
+            const {token} = response.data;
+            if(token) setToken(token);
+            history.push('/');
+            window.location.reload()
+        }catch(e){
+            setErrorMessage(e.response.data.message)
 
-        const {token} = response.data;
-        setToken(token);
-        history.push('/');
+        }
+        
     }
 
     return (
         <div className="content-container">
             <h1>Sign Up</h1>
             {errorMessage && <div className="fail">{errorMessage}</div>}
+            <input
+                value={usernameValue}
+                onChange={e => setUserNameValue(e.target.value)}
+                placeholder="username" />
             <input
                 value={emailValue}
                 onChange={e => setEmailValue(e.target.value)}
@@ -46,7 +59,7 @@ export const SignUpPage = () => {
             <hr />
             <button
                 disabled={
-                    !emailValue || !passwordValue ||
+                    !emailValue || !passwordValue || !usernameValue || 
                     passwordValue !== confirmPasswordValue
                 }
                 onClick={onSignUpClicked}>Sign Up</button>

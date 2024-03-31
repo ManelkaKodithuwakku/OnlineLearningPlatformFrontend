@@ -41,11 +41,15 @@ button {
 
 .page-container {
   display: flex;
-  background-color: #ddd;
-  min-height: 100vh;
-  min-width: 100%;
+  background-color: #ffffff;
+  /* min-height: 100vh; */
+  /* min-width: 100%; */
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 50px;
 }
 
 .content-container {
