@@ -1,11 +1,6 @@
 # Online Learning Platform
 
-```diff
-- **Note: This project is still under development.**
-- DUE TO: Pre-planned weekend activities
-```
-
-A simple Online learning platform frontend. The system allows users to register, login, and view all courses and enrolled it.
+Welcome to the frontend of our Online Learning Platform! This platform provides a user-friendly interface for students and admin to engage with various courses, register for new accounts, and manage their enrollments.
 
 ## Setting up the Project
 
@@ -30,9 +25,5 @@ npm install
 ## Running the Application
 
 ```bash
-npm starthttps://github.com/ManelkaKodithuwakku/UserRegistraion-Fronend-App.git
-```
-
-```diff
-- **Warning: This version only includes functionalities for student registration and course enrollment. Other features are still under development.**
+npm start
 ```

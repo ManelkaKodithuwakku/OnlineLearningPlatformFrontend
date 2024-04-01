@@ -6,10 +6,10 @@ import { PrivateRoute } from './auth/PrivateRoute';
 import { CourseListPage } from './pages/CourseListPage';
 import { CourseDetailPage } from './pages/CourseDetailPage';
 import { EnrollPage } from './pages/EnrollPage';
-import { AdminDashboard } from './pages/AdminDashboard';
-import { ManageCoursesPage } from './pages/ManageCoursesPage';
+// import { AdminDashboard } from './pages/AdminDashboard';
 import NavBar from './components/NavBar';
 import { useUser } from './auth/useUser';
+import {ManageCoursesPage} from './pages/ManageCoursesPage';
 
 const Routes = () => {
 
@@ -34,10 +34,10 @@ const Routes = () => {
                 <PrivateRoute path="/enroll/:id">
                     <EnrollPage />
                 </PrivateRoute>
-                <PrivateRoute path="/admin" adminOnly>
+                {/* <PrivateRoute path="/admin" exact adminOnly>
                     <AdminDashboard />
-                </PrivateRoute>
-                <PrivateRoute path="/admin/manage-courses" adminOnly>
+                </PrivateRoute> */}
+                <PrivateRoute path="/admin/manage-courses" exact adminOnly>
                     <ManageCoursesPage />
                 </PrivateRoute>
                 <Route path="/">

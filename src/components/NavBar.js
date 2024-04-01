@@ -16,10 +16,10 @@ const NavBar = () => {
                 {user && !isAdmin && <li>
                     <Link to={`/enroll/${user.id}`}>Enrollment</Link>
                 </li>}
-                {isAdmin && <li>
+                {/* {user && isAdmin && <li>
                     <Link to="/admin">Admin Dashboard</Link>
-                </li>}
-                {isAdmin && <li>
+                </li>} */}
+                {user && isAdmin && <li>
                     <Link to="/admin/manage-courses">Manage Courses</Link>
                 </li>}
             </ul>

@@ -1,5 +1,4 @@
-import { useParams } from "react-router-dom"
-import courses from "./course-content"
+import { useParams,useLocation } from "react-router-dom"
 import { useState, useEffect } from "react"; // Import useEffect
 import axios from "axios";
 import { useToken } from "../auth/useToken";
@@ -8,6 +7,8 @@ export const CourseDetailPage = () => {
     const [token] = useToken();
     const { courseId } = useParams();
     const [isEnroll, setIsEnroll] = useState(false); // Initialize isEnroll with false
+    const location = useLocation();
+    const { courses } = location.state;
 
     useEffect(() => {
         const fetchEnrolledCourses = async () => {
@@ -27,6 +28,7 @@ export const CourseDetailPage = () => {
     }, [courseId, token]); // Add courseId and token as dependencies
 
     const course = courses.find(course => course.id === courseId);
+    // console.log(courses)
 
     const onEnrolledClick = async () => {
         setIsEnroll(!isEnroll)

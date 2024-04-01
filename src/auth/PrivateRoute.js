@@ -3,14 +3,12 @@ import { useUser } from './useUser';
 
 export const PrivateRoute = ({adminOnly, ...rest}) => {
     const user = useUser();
-
-    // console.log(user)
-    // console.log(adminOnly)
-    // console.log(rest)
-
+    
     if (!user) return <Redirect to="/login" />
-
-    if (adminOnly) return <Redirect to="/admin" />
+    if(adminOnly && !user.isAdmin) {
+        adminOnly = false;
+    }
+    // if (adminOnly) return <Redirect to="/admin/manage-courses" />
     
     return <Route {...rest} />
 }

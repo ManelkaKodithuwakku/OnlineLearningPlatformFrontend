@@ -1,7 +1,8 @@
 import CourseList from "../components/CourseList"
-import courses from "./course-content"
+import { useCourses } from "../hooks/useCourses"
 
 export const CourseListPage = () => {
+    const courses = useCourses();
     return (
         <>
             <h1>Courses</h1>

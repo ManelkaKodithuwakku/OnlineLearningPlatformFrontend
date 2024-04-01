@@ -24,6 +24,7 @@ nav {
   top: 0;
   width: 100%;
   background: white;
+  z-index: 1;
 }
 
 nav ul {
@@ -52,6 +53,7 @@ nav a:hover {
 
 
 .course-list-item {
+  width: 100%;
   text-decoration: none;
   color: black;
   padding: 16px 0 0 0;
@@ -92,10 +94,80 @@ nav a:hover {
 
 .course-row{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   border-bottom: 1px black solid;
 }
 
 .course-row :last-child{
   color: green;
+}
+
+.manage-course-container{
+  /* background-color: blue; */
+  position: relative;
+  width: 80%;
+  height:max-content
+}
+
+.manage-course-container>button{
+  margin: 0 0 8px 0;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.course-list{
+  display: flex;
+  /* background-color: red; */
+  justify-content: space-between;
+  border-bottom: 1px black solid;
+
+}
+
+.course-list div{
+  /* background-color: green; */
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  padding-left: 10px;
+  justify-content:center;
+}
+.course-list div div{
+  /* background-color: aqua; */
+  text-overflow:initial;
+  padding-left: 0px;
+  font-size: 15px;
+}
+
+.course-list div h1{
+  font-size:20px;
+  text-align: left;
+  /* background-color: blueviolet; */
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.course-list button{
+  width: 100px;
+  height: 50px;
+}
+
+.add-course-section{
+  width: 500px;
+  /* background-color: red; */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.add-course-section textarea{
+  width: 90%;
+  height: 200px;
+}
+
+.add-course-section input{
+  width: 92%;
+}
+
+.add-course-section button{
+  width: 92%;
+  margin-left: 0px;
 }
